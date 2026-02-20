@@ -1,0 +1,21 @@
+table {
+    border: 1px solid black;
+    background-color: hsl(69, 83%, 77%);
+}
+
+th {
+    border: 1px solid black;
+    background-color: hsl(202, 80%, 76%);
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+td {
+    padding-left: 10px;
+    padding-right: 10px;    
+    background-color: hsl(120, 74%, 82%);
+}
+
+tr:nth-child(even) {
+    background-color: hsl(69, 83%, 77%);
+}

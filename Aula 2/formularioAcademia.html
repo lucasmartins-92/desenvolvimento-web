@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicação - Athlete Factory</title>
+    <link rel="stylesheet" href="styleAcademia.css">
+</head>
+
+<body>
+    <header>
+        <h1>Athlete Factory</h1>
+        <h2>Aplicação para Avaliação de Perfil</h2>
+        <p>Apenas para atletas de elite. Vagas estritamente limitadas.</p>
+    </header>
+
+    <main>
+        <form action="">
+            <fieldset>
+                <legend>Dados Pessoais</legend>
+
+                <div class="input-group">
+                    <label for="nome">Nome Completo:</label>
+                    <input type="text" id="nome" placeholder="Digite seu nome completo" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email Profissional:</label>
+                    <input type="email" id="email" placeholder="Digite seu email" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="telefone">Telefone / WhatsApp:</label>
+                    <input type="tel" id="telefone" placeholder="(00) 00000-0000" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Data de Nascimento:</label>
+                    <input type="date" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Perfil Atlético</legend>
+
+                <div class="input-group">
+                    <label for="modalidade">Modalidade Esportiva Principal:</label>
+                    <input type="text" id="modalidade" placeholder="Ex: Triatlo, Jiu-Jitsu, Atletismo" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="nivel">Nível de Competição Atual:</label>
+                    <select name="nivel" id="nivel" required>
+                        <option value="" disabled selected>Selecione um nível</option>
+                        <option value="amador">Amador (Alto Rendimento)</option>
+                        <option value="nacional">Profissional (Cenário Nacional)</option>
+                        <option value="internacional">Profissional (Cenário Internacional)</option>
+                        <option value="olimpico">Nível Olímpico</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="conquistas">Principais Títulos / Conquistas Recentes:</label>
+                    <textarea name="conquistas" id="conquistas" rows="4"
+                        placeholder="Descreva brevemente seu histórico vencedor..."></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="portfolio">Link de Referência (Perfil de Atleta / Portfólio esportivo):</label>
+                    <input type="url" id="portfolio" placeholder="https://instagram.com/... ou seu site">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Alinhamento e Expectativas</legend>
+
+                <div class="input-group">
+                    <label>Qual é o seu maior objetivo para o atual e próximo ciclo de competições?</label>
+                    <textarea name="objetivos" rows="4"
+                        placeholder="Ex: Preparação para as Olimpíadas, Campeonato Mundial..." required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>Equipe Multidisciplinar (O que você já possui?)</label>
+                    <div class="checkbox-container">
+                        <label><input type="checkbox" name="equipe" value="nutricionista"> Nutricionista
+                            Esportivo</label>
+                        <label><input type="checkbox" name="equipe" value="fisioterapeuta"> Fisioterapeuta</label>
+                        <label><input type="checkbox" name="equipe" value="psicologo"> Psicólogo do Esporte</label>
+                        <label><input type="checkbox" name="equipe" value="treinador"> Treinador Particular</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="actions">
+                <input type="submit" value="Enviar Aplicação" class="btn-submit">
+            </div>
+        </form>
+    </main>
+</body>
+
+</html>
