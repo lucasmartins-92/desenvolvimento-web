@@ -3,13 +3,7 @@ table {
     border-collapse: collapse;
 }
 
-th {
-    border: 1px solid black;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-td {
+th, td {
     border: 1px solid black;
     padding-left: 10px;
     padding-right: 10px;
