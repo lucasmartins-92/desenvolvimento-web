@@ -1,0 +1,53 @@
+ul.menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: purple;
+    overflow: hidden;
+}
+
+ul.menu li {
+    float: left;
+}
+
+ul.menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+ul.menu li a:hover {
+    background-color: yellow;
+}
+
+table.menu {
+    width: 100%;
+    background-color: purple;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+}
+
+table.menu th {
+    text-align: center;
+    padding: 14px 20px;
+}
+
+table.menu tr {
+    float: left;
+}
+
+table.menu th a {
+    color: white;
+    text-decoration: none;
+    display: block !important;
+    transition: background-color 0.3s;
+    float: left;
+}
+
+table.menu tr a:hover {
+    background-color: yellow;
+}
