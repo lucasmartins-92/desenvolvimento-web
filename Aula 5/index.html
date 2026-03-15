@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Desenvolvimento Web</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        html,
+        body {
+            min-height: 100%;
+        }
+
+        body {
+            margin: 0;
+            background: linear-gradient(145deg, #0f172a, #1e293b);
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #e2e8f0;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            padding: 20px;
+            margin-top: 90px;
+        }
+
+        article.card {
+            background-color: rgba(15, 23, 42, 0.78);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            border-radius: 20px;
+            padding: 25px;
+            width: 100%;
+            max-width: 325px;
+            box-shadow: 0 16px 30px rgba(2, 6, 23, 0.35);
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        article.card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 22px 40px rgba(2, 6, 23, 0.5);
+        }
+
+        article.card h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+            color: #f8fafc;
+            font-weight: 700;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        article.card p {
+            color: #cbd5e1;
+            font-size: 1rem;
+            margin: 0 0 20px 0;
+            font-weight: 500;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        article.card footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            border-top: 1px solid rgba(148, 163, 184, 0.3);
+            padding-top: 15px;
+            font-style: italic;
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(15, 23, 42, 0.82);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            z-index: 1000;
+            box-shadow: 0 8px 24px rgba(2, 6, 23, 0.45);
+            margin: 0;
+            list-style: none;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        .menu>li {
+            list-style: none;
+            position: relative;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #cbd5e1;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .menu a:hover {
+            background: rgba(148, 163, 184, 0.2);
+            color: #f8fafc;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            margin: 8px 0 0 0;
+            padding: 8px;
+            list-style: none;
+            background: rgba(15, 23, 42, 0.96);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(2, 6, 23, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.28);
+        }
+
+        .submenu li {
+            margin: 0;
+        }
+
+        .submenu a {
+            display: block;
+            border-radius: 8px;
+            padding: 8px 10px;
+        }
+
+        .menu>li:hover>.submenu {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <ul class="menu" id="menu">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="Eu.html">Quem sou eu?</a></li>
+            <li>
+                <a href="#">Aulas</a>
+                <ul class="submenu">
+                    <li><a href="Aulas/apresentacao.html">Apresentação</a></li>
+                    <li><a href="Aulas/formularioAcademia.html">Listas, tabelas e formulários</a></li>
+                    <li><a href="Aulas/menu_física.html">Menu, Classes, Imagens e vídeos</a></li>
+                    <li><a href="Aulas/cards.html">Cards, Player de áudio e plano de fundo</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Relatórios</a>
+            </li>
+            <li><a href="#">Contatos</a></li>
+        </ul>
+    </nav>
+
+    <main class="cards-container">
+        <article class="card">
+            <h2>Portfólio</h2>
+            <p>Este portfólio de Desenvolvimento Web
+                foi construído ao longo da disciplina com
+                o objetivo de reunir e apresentar, de forma
+                organizada, os projetos e atividades
+                desenvolvidos durante o semestre. A
+                proposta é demonstrar, na prática, as
+                habilidades adquiridas na criação de
+                páginas web, evidenciando a evolução no
+                uso das ferramentas e conceitos
+                estudados.</p>
+        </article>
+
+        <article class="card">
+            <h2>Desenvolvimento</h2>
+            <p>Os trabalhos apresentados foram
+                desenvolvidos em aula e posteriormente
+                passaram por ajustes, melhorias e
+                adequações, buscando aproximar o
+                resultado final do nível de organização,
+                estética e clareza esperado no mercado
+                profissional</p>
+        </article>
+
+        <article class="card">
+            <h2>Objetivo</h2>
+            <p>Este espaço funciona como uma vitrine
+                das capacidades desenvolvidas, reunindo
+                páginas, experimentos e projetos que
+                refletem o processo de aprendizagem e a
+                aplicação prática dos conhecimentos em
+                desenvolvimento web.</p>
+        </article>
+    </main>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>
