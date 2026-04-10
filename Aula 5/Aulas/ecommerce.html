@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameTECH - Lançamentos e Acessórios</title>
+    <link rel="stylesheet" href="styleEcommerce.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">GameTECH</div>
+        <nav>
+            <ul>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#utilidades">Utilidades</a></li>
+                <li><a href="#acessorios">Acessórios</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-carousel">
+            <button class="carousel-btn prev" onclick="moveCarousel(-1)">❮</button>
+            <button class="carousel-btn next" onclick="moveCarousel(1)">❯</button>
+            <div class="carousel-track">
+                <!-- Jogo 1 -->
+                <div class="carousel-slide">
+                    <img src="images/ark-2-pc-steam-cover.jpg" alt="ARK: SURVIVAL EVOLVED II">
+                    <div class="carousel-caption">
+                        <span class="platform">STEAM / XBOX</span>
+                        <h2>ARK: SURVIVAL EVOLVED II</h2>
+                        <p>Sobrevivência revolucionária com Vin Diesel e gráficos de última geração.</p>
+                        <button class="btn-buy"
+                            onclick="document.getElementById('games').scrollIntoView({behavior: 'smooth'})">VER
+                            OFERTAS</button>
+                    </div>
+                </div>
+                <!-- Jogo 2 -->
+                <div class="carousel-slide">
+                    <img src="images/RE-Requiem-Sales_03-04-26-768x43-1.webp" alt="RESIDENT EVIL REQUIEM">
+                    <div class="carousel-caption">
+                        <span class="platform">PS5 / XBOX / PC / SWITCH 2</span>
+                        <h2>RESIDENT EVIL REQUIEM</h2>
+                        <p>Prepare-se para escapar da morte em uma experiência aterrorizante que vai gelar sua alma!</p>
+                        <button class="btn-buy"
+                            onclick="document.getElementById('games').scrollIntoView({behavior: 'smooth'})">VER
+                            OFERTAS</button>
+                    </div>
+                </div>
+                <!-- Jogo 3 -->
+                <div class="carousel-slide">
+                    <img src="images/imgi_198_Pokemon-Pokopia.webp" alt="POKÉMON POKOPIA">
+                    <div class="carousel-caption">
+                        <span class="platform">SWITCH 2</span>
+                        <h2>POKÉMON POKOPIA</h2>
+                        <p>Explore um mundo aberto com seus Pokémon favoritos e descubra novas aventuras!</p>
+                        <button class="btn-buy"
+                            onclick="document.getElementById('games').scrollIntoView({behavior: 'smooth'})">VER
+                            OFERTAS</button>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-hint">Deslize para o lado para ver mais ➔</div>
+        </section>
+
+        <section id="games" class="category-section">
+            <h2>Games</h2>
+            <div class="product-grid">
+                <article class="card">
+                    <div class="card-image">
+                        <img src="images/ark-2-pc-steam-cover.jpg" alt="ARK: SURVIVAL EVOLVED II">
+                        <span class="badge-discount">LANÇAMENTO</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="platform">STEAM / XBOX</span>
+                        <h3>ARK: SURVIVAL EVOLVED II</h3>
+                        <p class="desc">Sobrevivência revolucionária com Vin Diesel e gráficos de última geração.</p>
+                        <div class="price-container">
+                            <span class="current-price">Lançamento: 24/09/2025</span>
+                        </div>
+                        <button class="btn-buy">GARANTIR CÓPIA</button>
+                    </div>
+                    <div class="card-footer">
+                        Crédito da imagem: <a href="https://instant-gaming.com">Instant Gaming</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-image">
+                        <img src="images/RE-Requiem-Sales_03-04-26-768x43-1.webp" alt="RESIDENT EVIL REQUIEM">
+                    </div>
+                    <div class="card-content">
+                        <span class="platform">PS5 / XBOX / PC / SWITCH 2</span>
+                        <h3>RESIDENT EVIL REQUIEM</h3>
+                        <p class="desc">Prepare-se para escapar da morte em uma experiência aterrorizante que vai gelar
+                            sua alma!
+                        </p>
+                        <div class="price-container">
+                            <span class="current-price">R$ 249,90</span>
+                        </div>
+                        <button class="btn-buy">COMPRAR</button>
+                    </div>
+                    <div class="card-footer">
+                        Crédito da imagem: <a href="https://www.techgoggles.net">TechGoggles</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-image">
+                        <img src="images/imgi_198_Pokemon-Pokopia.webp" alt="POKÉMON POKOPIA">
+                    </div>
+                    <div class="card-content">
+                        <span class="platform">SWITCH 2</span>
+                        <h3>POKÉMON POKOPIA</h3>
+                        <p class="desc">Explore um mundo aberto com seus Pokémon favoritos e descubra novas aventuras!
+                        </p>
+                        <div class="price-container">
+                            <span class="current-price">R$ 399,00</span>
+                        </div>
+                        <button class="btn-buy">COMPRAR</button>
+                    </div>
+                    <div class="card-footer">
+                        Crédito da imagem: <a href="https://www.nintendo.com">Nintendo</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="utilidades" class="category-section">
+            <h2>Utilidades</h2>
+            <div class="product-grid">
+                <article class="card">
+                    <div class="card-image">
+                        <img src="images/7471589090_1_xlarge.webp" alt="SNAKE LANCASTER CGF0001-B">
+                        <span class="badge-discount">-15%</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="platform">FORTT / GAMER</span>
+                        <h3>Snake Lancaster CGF0001-B</h3>
+                        <p class="desc">Encosto reclinável 135°, braços fixos e assento acolchoado (120kg).
+                        </p>
+                        <div class="price-container">
+                            <span class="old-price">R$ 1.200,00</span>
+                            <span class="current-price">R$ 989,00</span>
+                        </div>
+                        <button class="btn-buy">APROVEITAR OFERTA</button>
+                    </div>
+                    <div class="card-footer">
+                        Crédito da imagem: <a href="https://www.amazon.com.br/stores/Fortt/">Fortt</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-image">
+                        <img src="images/mesa-gamer-rgb-rise-mode-desk-07-suporte-para-copos-suporte-para-headset-preto-rm-tb-07-bk_1717762981_gg.webp"
+                            alt="Mesa Gamer RGB Rise Mode">
+                        <span class="badge-discount">-13%</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="platform">RiseMode</span>
+                        <h3>Mesa Gamer RGB Rise Mode</h3>
+                        <p class="desc">Mesa ergonômica com iluminação RGB, porta-copos e suporte para headset.</p>
+                        <div class="price-container">
+                            <span class="old-price">R$ 749,90</span>
+                            <span class="current-price">R$ 649,90</span>
+                        </div>
+                        <button class="btn-buy">APROVEITAR OFERTA</button>
+                    </div>
+                    <div class="card-footer">
+                        Crédito da imagem: <a href="https://lojarisemode.com.br/">RiseMode</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-image">
+                        <img src="images/suporte-ergonomico-multiarticulado-de-mesa-para-monitor-17-a-35-elg-f98hdmi-pistao-a-gas-vesa-grafite-f98hdmi_1758798019_gg.webp"
+                            alt="Suporte de Mesa Articulado para Monitor">
+                    </div>
+                    <div class="card-content">
+                        <span class="platform">elg</span>
+                        <h3>Suporte de Mesa Articulado para Monitor</h3>
+                        <p class="desc">Mesa ergonômica com iluminação RGB, porta-copos e suporte para headset.</p>
+                        <div class="price-container">
+                            <span class="current-price">R$ 299,90</span>
+                        </div>
+                        <button class="btn-buy">APROVEITAR OFERTA</button>
+                    </div>
+                    <div class="card-footer">
+                        Crédito da imagem: <a href="https://www.elgstore.com.br/">elgstore</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="acessorios" class="category-section">
+            <h2>Acessórios</h2>
+            <div class="product-grid">
+                <article class="card">
+                    <div class="card-image">
+                        <img src="images/suporte-gamer-para-notebook-kbm-gaming-bg500-ate-21-6-fans-rgb-preto-e-vermelho-kgbg500pt_1724413891_gg.webp"
+                            alt="Suporte Gamer para Notebook">
+                        <span class="badge-promo">QUEIMA DE ESTOQUE</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="platform">KBM</span>
+                        <h3>Suporte Gaming BG500</h3>
+                        <p class="desc">6 fans (2400 RPM), RGB em 7 modos e suporte para celular integrado.</p>
+                        <div class="price-container">
+                            <span class="current-price">R$ 245,00</span>
+                        </div>
+                        <button class="btn-buy">COMPRAR AGORA</button>
+                    </div>
+                    <div class="card-footer">
+                        Crédito da imagem: <a href="https://www.kabum.com.br/">Kabum</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-image">
+                        <img src="images/D_NQ_NP_2X_900446-MLA99939659127_112025-F.webp"
+                            alt="Teclado gamer Redragon Mitra K551">
+                    </div>
+                    <div class="card-content">
+                        <span class="platform">Redragon</span>
+                        <h3>Teclado gamer Redragon Mitra K551</h3>
+                        <p class="desc">Teclado mecânico com switch Outemu Red, iluminação RGB e design ergonômico.</p>
+                        <div class="price-container">
+                            <span class="current-price">R$ 235,00</span>
+                        </div>
+                        <button class="btn-buy">COMPRAR AGORA</button>
+                    </div>
+                    <div class="card-footer">
+                        Crédito da imagem: <a href="https://www.kabum.com.br/">Kabum</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-image">
+                        <img src="images/headset-gamer-superframe-velka-71-surround-rgb-usb-black_105235.jpg"
+                            alt="Headset Gamer SuperFrame">
+                        <span class="badge-promo">PROMOÇÃO</span>
+                    </div>
+                    <div class="card-content">
+                        <span class="platform">SuperFrame</span>
+                        <h3>Headset Gamer SuperFrame</h3>
+                        <p class="desc">Headset gamer com microfone, drivers de 50mm e som surround.</p>
+                        <div class="price-container">
+                            <span class="old-price">R$ 299,90</span>
+                            <span class="current-price">R$ 149,90</span>
+                        </div>
+                        <button class="btn-buy">COMPRAR AGORA</button>
+                    </div>
+                    <div class="card-footer">
+                        Crédito da imagem: <a href="https://www.terabyteshop.com.br/">Terabyte Shop</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Desenvolvido por Lucas Martins de Andrade - GameTECH</p>
+    </footer>
+
+    <script>
+        function moveCarousel(direction) {
+            const track = document.querySelector('.carousel-track');
+            const maxScroll = track.scrollWidth - track.clientWidth;
+
+            if (direction === 1 && track.scrollLeft >= maxScroll - 10) {
+                track.scrollTo({ left: 0, behavior: 'smooth' });
+            } else if (direction === -1 && track.scrollLeft <= 10) {
+                track.scrollTo({ left: maxScroll, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: direction * window.innerWidth, behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+
+</html>
