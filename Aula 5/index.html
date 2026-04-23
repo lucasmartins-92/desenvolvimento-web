@@ -1,371 +1,360 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfólio Desenvolvimento Web</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --bg-0: #0b1220;
-        --bg-1: #111b2e;
-        --panel: rgba(16, 24, 40, 0.72);
-        --line: rgba(160, 180, 210, 0.22);
-        --text-0: #e8eef8;
-        --text-1: #b6c2d9;
-        --accent: #35d0ff;
-        --accent-soft: rgba(53, 208, 255, 0.18);
-        --radius-lg: 18px;
-        --radius-md: 12px;
-        --shadow-1: 0 10px 28px rgba(0, 0, 0, 0.28);
-        --shadow-2: 0 18px 42px rgba(0, 0, 0, 0.36);
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio Desenvolvimento Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg-0: #0b1220;
+      --bg-1: #111b2e;
+      --panel: rgba(16, 24, 40, 0.72);
+      --line: rgba(160, 180, 210, 0.22);
+      --text-0: #e8eef8;
+      --text-1: #b6c2d9;
+      --accent: #35d0ff;
+      --accent-soft: rgba(53, 208, 255, 0.18);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-1: 0 10px 28px rgba(0, 0, 0, 0.28);
+      --shadow-2: 0 18px 42px rgba(0, 0, 0, 0.36);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+      color: var(--text-0);
+      background: linear-gradient(160deg, var(--bg-0), var(--bg-1));
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .menu {
+      margin: 0;
+      padding: 14px 20px;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 18px;
+      background: rgba(11, 18, 32, 0.68);
+      border-bottom: 1px solid var(--line);
+      box-shadow: var(--shadow-1);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .menu>li {
+      position: relative;
+    }
+
+    .menu a {
+      display: inline-block;
+      padding: 8px 14px;
+      color: var(--text-1);
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      transition: color 0.25s ease, background-color 0.25s ease;
+    }
+
+    .menu a:hover {
+      color: var(--text-0);
+      background: var(--accent-soft);
+    }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 240px;
+      margin: 0;
+      padding: 8px;
+      list-style: none;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: rgba(11, 18, 32, 0.95);
+      box-shadow: var(--shadow-1);
+    }
+
+    .submenu::before {
+      content: "";
+      position: absolute;
+      top: -32px;
+      left: 0;
+      right: 0;
+      height: 32px;
+    }
+
+    .submenu a {
+      display: block;
+      border-radius: 8px;
+    }
+
+    .menu>li:hover>.submenu {
+      display: block;
+    }
+
+    .hero {
+      max-width: 1000px;
+      margin: 24px auto 8px;
+      padding: 14px 20px;
+      text-align: center;
+      animation: fade-up 0.65s ease both;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: "Space Grotesk", "Segoe UI", sans-serif;
+      font-size: clamp(1.8rem, 3.4vw, 3rem);
+      line-height: 1.12;
+      letter-spacing: 0.4px;
+      text-wrap: balance;
+    }
+
+    .hero p {
+      margin: 10px 0 0;
+      color: var(--text-1);
+      font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+    }
+
+    .cards-container {
+      max-width: 1120px;
+      margin: 18px auto 48px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 240px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--panel);
+      box-shadow: var(--shadow-1);
+      text-align: center;
+      animation: fade-up 0.6s ease both;
+      transition: transform 0.25s ease, box-shadow 0.25s ease,
+        border-color 0.25s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg,
+          transparent,
+          var(--accent),
+          transparent);
+      opacity: 0.8;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(53, 208, 255, 0.45);
+      box-shadow: var(--shadow-2);
+    }
+
+    .card h2 {
+      margin: 0;
+      font-family: "Space Grotesk", "Segoe UI", sans-serif;
+      font-size: 1.4rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--text-1);
+      line-height: 1.6;
+    }
+
+    .card:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: 0.16s;
+    }
+
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
       }
 
-      * {
-        box-sizing: border-box;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
+    }
 
-      html,
-      body {
-        min-height: 100%;
-      }
-
-      body {
-        margin: 0;
-        font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
-        color: var(--text-0);
-        background: linear-gradient(160deg, var(--bg-0), var(--bg-1));
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-      }
-
-      nav {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-      }
-
+    @media (max-width: 700px) {
       .menu {
-        margin: 0;
-        padding: 14px 20px;
-        list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 18px;
-        background: rgba(11, 18, 32, 0.68);
-        border-bottom: 1px solid var(--line);
-        box-shadow: var(--shadow-1);
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-      }
-
-      .menu > li {
-        position: relative;
+        gap: 8px;
+        padding: 12px;
       }
 
       .menu a {
-        display: inline-block;
-        padding: 8px 14px;
-        color: var(--text-1);
-        text-decoration: none;
-        border-radius: 999px;
-        font-weight: 600;
-        letter-spacing: 0.2px;
-        transition: color 0.25s ease, background-color 0.25s ease;
-      }
-
-      .menu a:hover {
-        color: var(--text-0);
-        background: var(--accent-soft);
+        padding: 7px 11px;
+        font-size: 0.95rem;
       }
 
       .submenu {
-        display: none;
-        position: absolute;
-        top: calc(100% + 8px);
-        left: 0;
-        min-width: 240px;
-        margin: 0;
-        padding: 8px;
-        list-style: none;
-        border: 1px solid var(--line);
-        border-radius: var(--radius-md);
-        background: rgba(11, 18, 32, 0.95);
-        box-shadow: var(--shadow-1);
-      }
-
-      .submenu::before {
-        content: "";
-        position: absolute;
-        top: -32px;
-        left: 0;
-        right: 0;
-        height: 32px;
-      }
-
-      .submenu a {
-        display: block;
-        border-radius: 8px;
-      }
-
-      .menu > li:hover > .submenu {
-        display: block;
-      }
-
-      .hero {
-        max-width: 1000px;
-        margin: 24px auto 8px;
-        padding: 14px 20px;
-        text-align: center;
-        animation: fade-up 0.65s ease both;
-      }
-
-      .hero h1 {
-        margin: 0;
-        font-family: "Space Grotesk", "Segoe UI", sans-serif;
-        font-size: clamp(1.8rem, 3.4vw, 3rem);
-        line-height: 1.12;
-        letter-spacing: 0.4px;
-        text-wrap: balance;
-      }
-
-      .hero p {
-        margin: 10px 0 0;
-        color: var(--text-1);
-        font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+        position: static;
+        margin-top: 8px;
       }
 
       .cards-container {
-        max-width: 1120px;
-        margin: 18px auto 48px;
-        padding: 0 20px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
+        padding: 0 14px 20px;
+        gap: 14px;
       }
 
       .card {
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        min-height: 240px;
-        padding: 24px;
-        border: 1px solid var(--line);
-        border-radius: var(--radius-lg);
-        background: var(--panel);
-        box-shadow: var(--shadow-1);
-        text-align: center;
-        animation: fade-up 0.6s ease both;
-        transition: transform 0.25s ease, box-shadow 0.25s ease,
-          border-color 0.25s ease;
+        min-height: 0;
       }
+    }
+  </style>
+</head>
 
-      .card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--accent),
-          transparent
-        );
-        opacity: 0.8;
-      }
+<body>
+  <nav>
+    <ul class="menu" id="menu">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="Eu.html">Quem sou eu?</a></li>
+      <li>
+        <a href="#">Aulas</a>
+        <ul class="submenu">
+          <li>
+            <a href="Aulas/formularioAcademia.html">Listas, tabelas e formulários</a>
+          </li>
+          <li>
+            <a href="Aulas/menu_física.html">Menu, Classes, Imagens e vídeos</a>
+          </li>
+          <li>
+            <a href="Aulas/cards.html">Cards, Player de áudio e plano de fundo</a>
+          </li>
+          <li>
+            <a href="Aulas/botoes.html">Botões, Alertas, Tela de Login</a>
+          </li>
+          <li>
+            <a href="Aulas/ecommerce.html">Landing Page E-Commerce</a>
+          </li>
+          <li>
+            <a href="Aulas/tabelaperiodica.html">Tabela periódica</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Relatórios</a>
+        <ul class="submenu">
+          <li>
+            <a href="https://drive.google.com/file/d/1yzpuNqP_sNRum_SNEqKYsmNwdjNKeePh/view?usp=sharing">Listas, tabelas
+              e formulários</a>
+          </li>
+          <li>
+            <a href="https://drive.google.com/file/d/1_ySfy544NcnGVwlaQFe64GrgOaKV1iT0/view?usp=drive_link">Menu,
+              classes, imagens e vídeos</a>
+          </li>
+          <li>
+            <a
+              href="https://docs.google.com/document/d/175K9lqhqUQNUzRbixMtZDKeC42lgzD20/edit?usp=sharing&ouid=116949243921362508687&rtpof=true&sd=true">Cards,
+              player de áudio e plano de fundo</a>
+          </li>
+          <li>
+            <a href="https://drive.google.com/file/d/12xzAXmQctab4wcTSbR_MHiZCDwue_ZKy/view?usp=sharing">Publicação
+              online</a>
+          </li>
+          <li>
+            <a href="https://drive.google.com/file/d/184QMsuCym5FM71NvduH4lOsbFCosBfU3/view?usp=sharing">Botões,
+              Alertas, Tela de Login</a>
+          </li>
+          <li>
+            <a href="https://drive.google.com/file/d/1-lZePygdg_e0C-aNIVKv6K9Or-pVQqIi/view?usp=sharing">Landing Page
+              E-Commerce</a>
+          </li>
+          <li>
+            <a href="https://drive.google.com/file/d/1Rddxw9gD8ZiSLQPLlhwIdfuh-uiSZRnl/view?usp=sharing">Tabela
+              periódica</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#">Contatos</a></li>
+    </ul>
+  </nav>
 
-      .card:hover {
-        transform: translateY(-6px);
-        border-color: rgba(53, 208, 255, 0.45);
-        box-shadow: var(--shadow-2);
-      }
+  <header class="hero">
+    <h1>Portfólio - Lucas Martins de Andrade</h1>
+    <p>
+      Projetos e experiências de Desenvolvimento Web com foco em clareza,
+      estrutura e evolução técnica.
+    </p>
+  </header>
 
-      .card h2 {
-        margin: 0;
-        font-family: "Space Grotesk", "Segoe UI", sans-serif;
-        font-size: 1.4rem;
-      }
-
-      .card p {
-        margin: 0;
-        color: var(--text-1);
-        line-height: 1.6;
-      }
-
-      .card:nth-child(2) {
-        animation-delay: 0.08s;
-      }
-
-      .card:nth-child(3) {
-        animation-delay: 0.16s;
-      }
-
-      @keyframes fade-up {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @media (max-width: 700px) {
-        .menu {
-          gap: 8px;
-          padding: 12px;
-        }
-
-        .menu a {
-          padding: 7px 11px;
-          font-size: 0.95rem;
-        }
-
-        .submenu {
-          position: static;
-          margin-top: 8px;
-        }
-
-        .cards-container {
-          padding: 0 14px 20px;
-          gap: 14px;
-        }
-
-        .card {
-          min-height: 0;
-        }
-      }
-    </style>
-  </head>
-
-  <body>
-    <nav>
-      <ul class="menu" id="menu">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="Eu.html">Quem sou eu?</a></li>
-        <li>
-          <a href="#">Aulas</a>
-          <ul class="submenu">
-            <li>
-              <a href="Aulas/formularioAcademia.html"
-                >Listas, tabelas e formulários</a
-              >
-            </li>
-            <li>
-              <a href="Aulas/menu_física.html"
-                >Menu, Classes, Imagens e vídeos</a
-              >
-            </li>
-            <li>
-              <a href="Aulas/cards.html"
-                >Cards, Player de áudio e plano de fundo</a
-              >
-            </li>
-            <li>
-              <a href="Aulas/botoes.html">Botões, Alertas, Tela de Login</a>
-            </li>
-            <li>
-              <a href="Aulas/ecommerce.html">Landing Page E-Commerce</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Relatórios</a>
-          <ul class="submenu">
-            <li>
-              <a
-                href="https://drive.google.com/file/d/1yzpuNqP_sNRum_SNEqKYsmNwdjNKeePh/view?usp=sharing"
-                >Listas, tabelas e formulários</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://drive.google.com/file/d/1_ySfy544NcnGVwlaQFe64GrgOaKV1iT0/view?usp=drive_link"
-                >Menu, classes, imagens e vídeos</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://docs.google.com/document/d/175K9lqhqUQNUzRbixMtZDKeC42lgzD20/edit?usp=sharing&ouid=116949243921362508687&rtpof=true&sd=true"
-                >Cards, player de áudio e plano de fundo</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://drive.google.com/file/d/12xzAXmQctab4wcTSbR_MHiZCDwue_ZKy/view?usp=sharing"
-                >Publicação online</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://drive.google.com/file/d/184QMsuCym5FM71NvduH4lOsbFCosBfU3/view?usp=sharing"
-                >Botões, Alertas, Tela de Login</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://drive.google.com/file/d/1-lZePygdg_e0C-aNIVKv6K9Or-pVQqIi/view?usp=sharing"
-                >Landing Page E-Commerce</a
-              >
-            </li>
-          </ul>
-        </li>
-        <li><a href="#">Contatos</a></li>
-      </ul>
-    </nav>
-
-    <header class="hero">
-      <h1>Portfólio - Lucas Martins de Andrade</h1>
+  <main class="cards-container">
+    <article class="card">
+      <h2>Portfólio</h2>
       <p>
-        Projetos e experiências de Desenvolvimento Web com foco em clareza,
-        estrutura e evolução técnica.
+        Este portfólio de Desenvolvimento Web foi construído ao longo da
+        disciplina com o objetivo de reunir e apresentar, de forma organizada,
+        os projetos e atividades desenvolvidos durante o semestre. A proposta
+        é demonstrar, na prática, as habilidades adquiridas na criação de
+        páginas web, evidenciando a evolução no uso das ferramentas e
+        conceitos estudados.
       </p>
-    </header>
+    </article>
 
-    <main class="cards-container">
-      <article class="card">
-        <h2>Portfólio</h2>
-        <p>
-          Este portfólio de Desenvolvimento Web foi construído ao longo da
-          disciplina com o objetivo de reunir e apresentar, de forma organizada,
-          os projetos e atividades desenvolvidos durante o semestre. A proposta
-          é demonstrar, na prática, as habilidades adquiridas na criação de
-          páginas web, evidenciando a evolução no uso das ferramentas e
-          conceitos estudados.
-        </p>
-      </article>
+    <article class="card">
+      <h2>Desenvolvimento</h2>
+      <p>
+        Os trabalhos apresentados foram desenvolvidos em aula e posteriormente
+        passaram por ajustes, melhorias e adequações, buscando aproximar o
+        resultado final do nível de organização, estética e clareza esperado
+        no mercado profissional
+      </p>
+    </article>
 
-      <article class="card">
-        <h2>Desenvolvimento</h2>
-        <p>
-          Os trabalhos apresentados foram desenvolvidos em aula e posteriormente
-          passaram por ajustes, melhorias e adequações, buscando aproximar o
-          resultado final do nível de organização, estética e clareza esperado
-          no mercado profissional
-        </p>
-      </article>
+    <article class="card">
+      <h2>Objetivo</h2>
+      <p>
+        Este espaço funciona como uma vitrine das capacidades desenvolvidas,
+        reunindo páginas, experimentos e projetos que refletem o processo de
+        aprendizagem e a aplicação prática dos conhecimentos em
+        desenvolvimento web.
+      </p>
+    </article>
+  </main>
+</body>
 
-      <article class="card">
-        <h2>Objetivo</h2>
-        <p>
-          Este espaço funciona como uma vitrine das capacidades desenvolvidas,
-          reunindo páginas, experimentos e projetos que refletem o processo de
-          aprendizagem e a aplicação prática dos conhecimentos em
-          desenvolvimento web.
-        </p>
-      </article>
-    </main>
-  </body>
 </html>
