@@ -1,0 +1,49 @@
+GK Diogo Costa 1
+
+GK José Sá 12
+
+GK Rui Silva 22
+
+DF Rúben Dias 4
+
+DF Gonçalo Inácio 14
+
+DF António Silva 3
+
+DF Nuno Mendes 19
+
+DF João Cancelo 2
+
+DF Diogo Dalot 5
+
+DF Nélson Semedo 23
+
+DF Tiago Djaló 15
+
+MF João Palhinha 6
+
+MF Vitinha 23
+
+MF Bruno Fernandes 8
+
+MF Bernardo Silva 10
+
+MF João Neves 15
+
+MF Otávio 16
+
+MF Rúben Neves 18
+
+FW Cristiano Ronaldo 7
+
+FW Rafael Leão 17
+
+FW Diogo Jota 21
+
+FW Gonçalo Ramos 9
+
+FW João Félix 11
+
+FW Pedro Neto 25
+
+FW Francisco Conceição 26
