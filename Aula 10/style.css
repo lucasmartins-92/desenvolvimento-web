@@ -150,7 +150,7 @@
         main {
             flex: 1;
             padding: 3rem 3.5rem;
-            max-width: 1100px;
+            max-width: 1600px;
         }
 
         /* ── HERO ── */
@@ -278,8 +278,8 @@
         }
 
         .selecao-block {
-            margin-bottom: 3rem;
-            padding-bottom: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
             border-bottom: 1px solid var(--border);
         }
 
@@ -291,7 +291,7 @@
             display: flex;
             align-items: center;
             gap: 1.2rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             cursor: pointer;
             user-select: none;
             transition: opacity .2s;
@@ -362,6 +362,15 @@
             display: none;
         }
 
+        /* Encolher as colunas de Número e Posição para o mínimo necessário */
+        .squad-table th:nth-child(1),
+        .squad-table td:nth-child(1),
+        .squad-table th:nth-child(2),
+        .squad-table td:nth-child(2) {
+            width: 1%;
+            white-space: nowrap;
+        }
+
         .squad-table.show {
             display: table;
         }
@@ -378,7 +387,7 @@
         }
 
         .squad-table tbody td {
-            padding: .55rem .8rem;
+            padding: .35rem .8rem;
             font-size: .8rem;
             border-bottom: 1px solid rgba(255, 255, 255, .04);
             vertical-align: middle;
@@ -450,33 +459,94 @@
 
         .bracket-table td {
             vertical-align: middle;
-            padding: 0.5rem 1.5rem;
+            padding: 0.2rem 0.8rem;
             position: relative;
         }
 
+        
+
+        
+
         /* Linhas de conexão do chaveamento */
-        .bracket-table td[rowspan]::before {
+
+        /* Split bracket specific lines */
+        .bracket-split td {
+            position: relative;
+        }
+
+        /* CONNECT LEFT: For cells on the left side, the lines are drawn on their LEFT connecting to the previous round */
+        .bracket-split td[rowspan].connect-left::before {
             content: "";
             position: absolute;
             top: 25%;
             bottom: 25%;
-            left: -1.5rem;
-            width: 1.5rem;
+            left: -0.8rem;
+            width: 0.8rem;
             border: 2px solid var(--border);
-            border-left: none;
+            border-left: none; /* forms a ] shape */
             border-radius: 0 4px 4px 0;
             box-sizing: border-box;
             z-index: 1;
         }
-
-        .bracket-table td[rowspan]::after {
+        
+        /* The horizontal line touching the match box */
+        .bracket-split td[rowspan].connect-left::after {
             content: "";
             position: absolute;
             top: 50%;
             left: 0;
-            width: 1.5rem;
+            width: 0.8rem;
             border-top: 2px solid var(--border);
             transform: translateY(-50%);
+            box-sizing: border-box;
+            z-index: 1;
+        }
+
+        /* CONNECT RIGHT: For cells on the right side, the lines are drawn on their RIGHT connecting to the previous round */
+        .bracket-split td[rowspan].connect-right::before {
+            content: "";
+            position: absolute;
+            top: 25%;
+            bottom: 25%;
+            right: -0.8rem;
+            width: 0.8rem;
+            border: 2px solid var(--border);
+            border-right: none; /* forms a [ shape */
+            border-radius: 4px 0 0 4px;
+            box-sizing: border-box;
+            z-index: 1;
+        }
+
+        .bracket-split td[rowspan].connect-right::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 0.8rem;
+            border-top: 2px solid var(--border);
+            transform: translateY(-50%);
+            box-sizing: border-box;
+            z-index: 1;
+        }
+
+        /* CONNECT CENTER: The Final needs horizontal lines connecting to the semis on both sides */
+        .bracket-split td[rowspan].connect-center::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -0.8rem;
+            width: 0.8rem;
+            border-top: 2px solid var(--border);
+            box-sizing: border-box;
+            z-index: 1;
+        }
+        .bracket-split td[rowspan].connect-center::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -0.8rem;
+            width: 0.8rem;
+            border-top: 2px solid var(--border);
             box-sizing: border-box;
             z-index: 1;
         }
@@ -486,8 +556,8 @@
             border: 1px solid var(--border);
             border-radius: 4px;
             padding: 0.3rem;
-            font-size: 0.85rem;
-            min-width: 140px;
+            font-size: 0.75rem;
+            min-width: 100px;
             position: relative;
             z-index: 2;
         }
