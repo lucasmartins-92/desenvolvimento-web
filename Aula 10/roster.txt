@@ -1,49 +1,47 @@
-GK Diogo Costa 1
+GK Orlando Mosquera 1
 
-GK José Sá 12
+GK Luis Mejía 22
 
-GK Rui Silva 22
+GK César Samudio 12
 
-DF Rúben Dias 4
+DF José Córdoba 3
 
-DF Gonçalo Inácio 14
+DF Edgardo Fariña 24
 
-DF António Silva 3
+DF Eric Davis 15
 
-DF Nuno Mendes 19
+DF Michael Murillo 2
 
-DF João Cancelo 2
+DF Fidel Escobar 4
 
-DF Diogo Dalot 5
+DF César Blackman 23
 
-DF Nélson Semedo 23
+DF Jiovany Ramos 5
 
-DF Tiago Djaló 15
+DF Roderick Miller 16
 
-MF João Palhinha 6
+MF Adalberto Carrasquilla 8
 
-MF Vitinha 23
+MF Aníbal Godoy 20
 
-MF Bruno Fernandes 8
+MF Cristian Martínez 6
 
-MF Bernardo Silva 10
+MF José Luis Rodríguez 7
 
-MF João Neves 15
+MF Édgar Bárcenas 10
 
-MF Otávio 16
+MF Abdiel Ayarza 17
 
-MF Rúben Neves 18
+MF Jovani Welch 14
 
-FW Cristiano Ronaldo 7
+MF Freddy Góndola 11
 
-FW Rafael Leão 17
+FW Ismael Díaz 19
 
-FW Diogo Jota 21
+FW José Fajardo 9
 
-FW Gonçalo Ramos 9
+FW Eduardo Guerrero 18
 
-FW João Félix 11
+FW Cecilio Waterman 13
 
-FW Pedro Neto 25
-
-FW Francisco Conceição 26
+FW Kahiser Lenis 21

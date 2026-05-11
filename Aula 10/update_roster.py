@@ -1,4 +1,5 @@
 import sys
+import json
 import re
 
 if len(sys.argv) != 3:
@@ -8,13 +9,27 @@ if len(sys.argv) != 3:
 team_id = sys.argv[1]
 roster_file = sys.argv[2]
 
-file_path = r"c:\Users\lucas.ma\Documents\Desenvolvimento Web\Aula 10\worldcup.html"
+file_path = "data.js"
 
 with open(roster_file, "r", encoding="utf-8") as f:
     players_raw = f.read().strip()
 
 with open(file_path, "r", encoding="utf-8") as f:
     content = f.read()
+
+# Extract JSON from data.js
+# data.js looks like: const selecoesData = [...];
+json_match = re.search(r'const selecoesData = (\[.*?\]);\s*$', content, re.DOTALL)
+if not json_match:
+    print("Could not find the JSON data inside data.js.")
+    sys.exit(1)
+
+json_str = json_match.group(1)
+try:
+    selecoes = json.loads(json_str)
+except json.JSONDecodeError as e:
+    print("Error decoding JSON from data.js:", e)
+    sys.exit(1)
 
 # Parse players and fix duplicate numbers
 players = []
@@ -32,7 +47,7 @@ for line in players_raw.splitlines():
     except ValueError:
         num = 0
     
-    player_dict = {'pos': pos, 'name': name, 'num': num}
+    player_dict = {'posicao': pos, 'nome': name, 'numero': num}
     players.append(player_dict)
     
     if num != 0 and num not in used_numbers:
@@ -44,28 +59,29 @@ for line in players_raw.splitlines():
 free_numbers = [i for i in range(1, 28) if i not in used_numbers]
 for p in duplicates:
     if free_numbers:
-        p['num'] = free_numbers.pop(0)
+        p['numero'] = free_numbers.pop(0)
 
-tbody_html = "<tbody>\n"
+# Make sure all numbers are strings since HTML originally expected strings
 for p in players:
-    tbody_html += f'                            <tr>\n'
-    tbody_html += f'                                <td><span class="pos-badge">{p["pos"]}</span></td>\n'
-    tbody_html += f'                                <td>{p["name"]}</td>\n'
-    tbody_html += f'                                <td><span class="jersey-number">{p["num"]}</span></td>\n'
-    tbody_html += f'                            </tr>\n'
-tbody_html += "                        </tbody>"
+    p['numero'] = str(p['numero'])
 
-def replacer(match):
-    return match.group(1) + tbody_html
+# Find the team and update its roster
+found = False
+for sel in selecoes:
+    if sel["id"] == team_id:
+        sel["jogadores"] = players
+        found = True
+        break
 
-pattern = rf'(<div class="selecao-block" id="{team_id}">.*?<table class="squad-table">.*?<thead>.*?</thead>\s*)<tbody>.*?</tbody>'
-new_content, count = re.subn(pattern, replacer, content, flags=re.DOTALL)
-
-if count == 0:
-    print(f"Failed to find team {team_id}")
+if not found:
+    print(f"Failed to find team {team_id} in data.js")
     sys.exit(1)
+
+# Save back to data.js
+new_json_str = json.dumps(selecoes, indent=4, ensure_ascii=False)
+new_content = "const selecoesData = " + new_json_str + ";\n"
 
 with open(file_path, "w", encoding="utf-8") as f:
     f.write(new_content)
 
-print(f"Replaced {count} occurrences for {team_id}.")
+print(f"Successfully updated roster for {team_id} with {len(players)} players in data.js.")
