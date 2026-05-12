@@ -8,241 +8,271 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
     rel="stylesheet" />
   <style>
     :root {
-      --bg-0: #0b1220;
-      --bg-1: #111b2e;
-      --panel: rgba(16, 24, 40, 0.72);
-      --line: rgba(160, 180, 210, 0.22);
-      --text-0: #e8eef8;
-      --text-1: #b6c2d9;
-      --accent: #35d0ff;
-      --accent-soft: rgba(53, 208, 255, 0.18);
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --shadow-1: 0 10px 28px rgba(0, 0, 0, 0.28);
-      --shadow-2: 0 18px 42px rgba(0, 0, 0, 0.36);
+      --bg: #F5F2EB;
+      --ink: #1C1A17;
+      --ink-light: #5E5A54;
+      --accent: #D64527;
+      --surface: #EBE6DC;
+      --border: #D1CCC1;
+      --grid: rgba(28, 26, 23, 0.04);
     }
 
     * {
       box-sizing: border-box;
-    }
-
-    html,
-    body {
-      min-height: 100%;
-    }
-
-    body {
       margin: 0;
-      font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
-      color: var(--text-0);
-      background: linear-gradient(160deg, var(--bg-0), var(--bg-1));
-      background-repeat: no-repeat;
-      background-attachment: fixed;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.6;
+      background-image: 
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 32px 32px;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      color: var(--ink);
     }
 
     nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      padding: 1.5rem 5vw;
+      position: relative;
+      z-index: 100;
     }
 
     .menu {
-      margin: 0;
-      padding: 14px 20px;
       list-style: none;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 18px;
-      background: rgba(11, 18, 32, 0.68);
-      border-bottom: 1px solid var(--line);
-      box-shadow: var(--shadow-1);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      gap: 3rem;
     }
 
-    .menu>li {
+    .menu > li {
       position: relative;
     }
 
     .menu a {
-      display: inline-block;
-      padding: 8px 14px;
-      color: var(--text-1);
       text-decoration: none;
-      border-radius: 999px;
-      font-weight: 600;
-      letter-spacing: 0.2px;
-      transition: color 0.25s ease, background-color 0.25s ease;
+      color: var(--ink);
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      padding: 0.5rem 0;
+      display: inline-block;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .menu > li > a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .menu > li > a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
     }
 
     .menu a:hover {
-      color: var(--text-0);
-      background: var(--accent-soft);
+      color: var(--accent);
     }
 
     .submenu {
-      display: none;
       position: absolute;
-      top: calc(100% + 8px);
-      left: 0;
-      min-width: 240px;
-      margin: 0;
-      padding: 8px;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(15px);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      min-width: 280px;
       list-style: none;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-md);
-      background: rgba(11, 18, 32, 0.95);
-      box-shadow: var(--shadow-1);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 1.5rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
     }
 
-    .submenu::before {
-      content: "";
-      position: absolute;
-      top: -32px;
-      left: 0;
-      right: 0;
-      height: 32px;
+    .menu > li:hover .submenu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .submenu li {
+      margin-bottom: 0.8rem;
+    }
+
+    .submenu li:last-child {
+      margin-bottom: 0;
     }
 
     .submenu a {
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: var(--ink-light);
+      text-transform: none;
       display: block;
-      border-radius: 8px;
+      transition: all 0.3s ease;
     }
 
-    .menu>li:hover>.submenu {
-      display: block;
+    .submenu a:hover {
+      color: var(--accent);
+      transform: translateX(4px);
     }
 
     .hero {
-      max-width: 1000px;
-      margin: 24px auto 8px;
-      padding: 14px 20px;
-      text-align: center;
-      animation: fade-up 0.65s ease both;
+      max-width: 1100px;
+      margin: 1.5rem auto 1.5rem;
+      padding: 0 5vw;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .hero h1 {
-      margin: 0;
-      font-family: "Space Grotesk", "Segoe UI", sans-serif;
-      font-size: clamp(1.8rem, 3.4vw, 3rem);
-      line-height: 1.12;
-      letter-spacing: 0.4px;
-      text-wrap: balance;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .hero h1::first-line {
+      font-style: italic;
+      color: var(--accent);
     }
 
     .hero p {
-      margin: 10px 0 0;
-      color: var(--text-1);
-      font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      max-width: 500px;
+      color: var(--ink-light);
+      justify-self: end;
+      text-align: right;
+      position: relative;
+    }
+
+    .hero p::before {
+      content: '';
+      position: absolute;
+      top: 13px;
+      left: -30px;
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
     }
 
     .cards-container {
-      max-width: 1120px;
-      margin: 18px auto 48px;
-      padding: 0 20px;
+      max-width: 1100px;
+      margin: 0 auto 2rem;
+      padding: 0 5vw;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      align-items: start;
     }
 
     .card {
+      border-top: 1px solid var(--ink);
+      padding-top: 1.5rem;
       position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      min-height: 240px;
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: var(--panel);
-      box-shadow: var(--shadow-1);
-      text-align: center;
-      animation: fade-up 0.6s ease both;
-      transition: transform 0.25s ease, box-shadow 0.25s ease,
-        border-color 0.25s ease;
+      animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
     }
 
-    .card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg,
-          transparent,
-          var(--accent),
-          transparent);
-      opacity: 0.8;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(53, 208, 255, 0.45);
-      box-shadow: var(--shadow-2);
-    }
+    .card:nth-child(1) { animation-delay: 0.2s; }
+    .card:nth-child(2) { animation-delay: 0.4s; }
+    .card:nth-child(3) { animation-delay: 0.6s; }
 
     .card h2 {
-      margin: 0;
-      font-family: "Space Grotesk", "Segoe UI", sans-serif;
-      font-size: 1.4rem;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      line-height: 1.1;
     }
 
     .card p {
-      margin: 0;
-      color: var(--text-1);
-      line-height: 1.6;
+      font-size: 1.05rem;
+      color: var(--ink-light);
+      line-height: 1.7;
     }
 
-    .card:nth-child(2) {
-      animation-delay: 0.08s;
-    }
-
-    .card:nth-child(3) {
-      animation-delay: 0.16s;
-    }
-
-    @keyframes fade-up {
+    @keyframes fadeUp {
       from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(30px);
       }
-
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 768px) {
       .menu {
-        gap: 8px;
-        padding: 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
       }
-
-      .menu a {
-        padding: 7px 11px;
-        font-size: 0.95rem;
-      }
-
+      
       .submenu {
         position: static;
-        margin-top: 8px;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        border-left: 1px solid var(--border);
+        padding: 1rem 0 0 1rem;
+        display: none;
+        min-width: 100%;
+        margin-top: 0.5rem;
+      }
+
+      .menu > li:hover .submenu {
+        transform: none;
+        display: block;
+      }
+
+      .hero {
+        margin: 4rem auto 3rem;
+      }
+
+      .hero p {
+        justify-self: start;
+        text-align: left;
+        padding-left: 30px;
+        margin-top: 2rem;
+      }
+
+      .hero p::before {
+        left: 0;
       }
 
       .cards-container {
-        padding: 0 14px 20px;
-        gap: 14px;
-      }
-
-      .card {
-        min-height: 0;
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -252,30 +282,30 @@
   <nav>
     <ul class="menu" id="menu">
       <li><a href="index.html">Início</a></li>
-      <li><a href="Eu.html">Quem sou eu?</a></li>
+      <li><a href="../Aula 1/index.html">Quem sou eu?</a></li>
       <li>
         <a href="#">Aulas</a>
         <ul class="submenu">
           <li>
-            <a href="Aulas/formularioAcademia.html">Listas, tabelas e formulários</a>
+            <a href="../Aula 2/formularioAcademia.html">Listas, tabelas e formulários</a>
           </li>
           <li>
-            <a href="Aulas/menu_física.html">Menu, Classes, Imagens e vídeos</a>
+            <a href="../Aula 3/menu_física.html">Menu, Classes, Imagens e vídeos</a>
           </li>
           <li>
-            <a href="Aulas/cards.html">Cards, Player de áudio e plano de fundo</a>
+            <a href="../Aula 4/id.html">Cards, Player de áudio e plano de fundo</a>
           </li>
           <li>
-            <a href="Aulas/botoes.html">Botões, Alertas, Tela de Login</a>
+            <a href="../Aula 6/login.html">Botões, Alertas, Tela de Login</a>
           </li>
           <li>
-            <a href="Aulas/ecommerce.html">Landing Page E-Commerce</a>
+            <a href="../Aula 7/index.html">Landing Page E-Commerce</a>
           </li>
           <li>
-            <a href="Aulas/tabelaperiodica.html">Tabela periódica</a>
+            <a href="../Aula 8/tabelaperiodica.html">Tabela periódica</a>
           </li>
           <li>
-            <a href="Aulas/fotografia.html">Fotografia</a>
+            <a href="../Aula 9/fotografia.html">Fotografia</a>
           </li>
         </ul>
       </li>
