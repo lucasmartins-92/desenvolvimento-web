@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio Desenvolvimento Web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F5F2EB;
+      --ink: #1C1A17;
+      --ink-light: #5E5A54;
+      --accent: #D64527;
+      --surface: #EBE6DC;
+      --border: #D1CCC1;
+      --grid: rgba(28, 26, 23, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.6;
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 32px 32px;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    nav {
+      padding: 1.5rem 5vw;
+      position: relative;
+      z-index: 100;
+    }
+
+    .menu {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 3rem;
+    }
+
+    .menu>li {
+      position: relative;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      padding: 0.5rem 0;
+      display: inline-block;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .menu>li>a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .menu>li>a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .menu a:hover {
+      color: var(--accent);
+    }
+
+    .submenu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(15px);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      min-width: 280px;
+      list-style: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 1.5rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+    }
+
+    .menu>li:hover .submenu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .submenu li {
+      margin-bottom: 0.8rem;
+    }
+
+    .submenu li:last-child {
+      margin-bottom: 0;
+    }
+
+    .submenu a {
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: var(--ink-light);
+      text-transform: none;
+      display: block;
+      transition: all 0.3s ease;
+    }
+
+    .submenu a:hover {
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 1.5rem auto 1.5rem;
+      padding: 0 5vw;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .hero h1::first-line {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      max-width: 500px;
+      color: var(--ink-light);
+      justify-self: end;
+      text-align: right;
+      position: relative;
+    }
+
+    .hero p::before {
+      content: '';
+      position: absolute;
+      top: 13px;
+      left: -30px;
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .cards-container {
+      max-width: 1100px;
+      margin: 0 auto 2rem;
+      padding: 0 5vw;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .card {
+      border-top: 1px solid var(--ink);
+      padding-top: 1.5rem;
+      position: relative;
+      animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+
+    .card:nth-child(1) {
+      animation-delay: 0.2s;
+    }
+
+    .card:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    .card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+
+    .card p {
+      font-size: 1.05rem;
+      color: var(--ink-light);
+      line-height: 1.7;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+
+      .submenu {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        border-left: 1px solid var(--border);
+        padding: 1rem 0 0 1rem;
+        display: none;
+        min-width: 100%;
+        margin-top: 0.5rem;
+      }
+
+      .menu>li:hover .submenu {
+        transform: none;
+        display: block;
+      }
+
+      .hero {
+        margin: 4rem auto 3rem;
+      }
+
+      .hero p {
+        justify-self: start;
+        text-align: left;
+        padding-left: 30px;
+        margin-top: 2rem;
+      }
+
+      .hero p::before {
+        left: 0;
+      }
+
+      .cards-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <ul class="menu" id="menu">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="Aula 1/index.html">Quem sou eu?</a></li>
+      <li>
+        <a href="#">Aulas</a>
+        <ul class="submenu">
+          <li>
+            <a href="Aula 2/formularioAcademia.html">Listas, tabelas e formulários</a>
+          </li>
+          <li>
+            <a href="Aula 3/menu_física.html">Menu, Classes, Imagens e vídeos</a>
+          </li>
+          <li>
+            <a href="Aula 4/id.html">Cards, Player de áudio e plano de fundo</a>
+          </li>
+          <li>
+            <a href="Aula 6/login.html">Botões, Alertas, Tela de Login</a>
+          </li>
+          <li>
+            <a href="Aula 7/index.html">Landing Page E-Commerce</a>
+          </li>
+          <li>
+            <a href="Aula 8/tabelaperiodica.html">Tabela periódica</a>
+          </li>
+          <li>
+            <a href="Aula 9/fotografia.html">Fotografia</a>
+          </li>
+          <li>
+            <a href="Aula 10/worldcup.html">Copa Do Mundo 2026</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Relatórios</a>
+        <ul class="submenu">
+          <li>
+            <a href="https://drive.google.com/file/d/1yzpuNqP_sNRum_SNEqKYsmNwdjNKeePh/view?usp=sharing">Listas, tabelas
+              e formulários</a>
+          </li>
+          <li>
+            <a href="https://drive.google.com/file/d/1_ySfy544NcnGVwlaQFe64GrgOaKV1iT0/view?usp=drive_link">Menu,
+              classes, imagens e vídeos</a>
+          </li>
+          <li>
+            <a
+              href="https://docs.google.com/document/d/175K9lqhqUQNUzRbixMtZDKeC42lgzD20/edit?usp=sharing&ouid=116949243921362508687&rtpof=true&sd=true">Cards,
+              player de áudio e plano de fundo</a>
+          </li>
+          <li>
+            <a href="https://drive.google.com/file/d/12xzAXmQctab4wcTSbR_MHiZCDwue_ZKy/view?usp=sharing">Publicação
+              online</a>
+          </li>
+          <li>
+            <a href="https://drive.google.com/file/d/184QMsuCym5FM71NvduH4lOsbFCosBfU3/view?usp=sharing">Botões,
+              Alertas, Tela de Login</a>
+          </li>
+          <li>
+            <a href="https://drive.google.com/file/d/1-lZePygdg_e0C-aNIVKv6K9Or-pVQqIi/view?usp=sharing">Landing Page
+              E-Commerce</a>
+          </li>
+          <li>
+            <a href="https://drive.google.com/file/d/1Rddxw9gD8ZiSLQPLlhwIdfuh-uiSZRnl/view?usp=sharing">Tabela
+              periódica</a>
+          </li>
+          <li>
+            <a href="https://drive.google.com/file/d/12OKc8ISAl2Pp0crAko5ZwP000dCZJs-P/view?usp=sharing">Fotografia</a>
+          </li>
+          <li>
+            <a href="https://drive.google.com/file/d/1CjRPtTGlt577xhkTzWY05uT9W4AIygPr/view?usp=sharing">Copa Do Mundo
+              2026</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#">Contatos</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <h1>Portfólio - Lucas Martins de Andrade</h1>
+    <p>
+      Projetos e experiências de Desenvolvimento Web com foco em clareza,
+      estrutura e evolução técnica.
+    </p>
+  </header>
+
+  <main class="cards-container">
+    <article class="card">
+      <h2>Portfólio</h2>
+      <p>
+        Este portfólio de Desenvolvimento Web foi construído ao longo da
+        disciplina com o objetivo de reunir e apresentar, de forma organizada,
+        os projetos e atividades desenvolvidos durante o semestre. A proposta
+        é demonstrar, na prática, as habilidades adquiridas na criação de
+        páginas web, evidenciando a evolução no uso das ferramentas e
+        conceitos estudados.
+      </p>
+    </article>
+
+    <article class="card">
+      <h2>Desenvolvimento</h2>
+      <p>
+        Os trabalhos apresentados foram desenvolvidos em aula e posteriormente
+        passaram por ajustes, melhorias e adequações, buscando aproximar o
+        resultado final do nível de organização, estética e clareza esperado
+        no mercado profissional
+      </p>
+    </article>
+
+    <article class="card">
+      <h2>Objetivo</h2>
+      <p>
+        Este espaço funciona como uma vitrine das capacidades desenvolvidas,
+        reunindo páginas, experimentos e projetos que refletem o processo de
+        aprendizagem e a aplicação prática dos conhecimentos em
+        desenvolvimento web.
+      </p>
+    </article>
+  </main>
+</body>
+
+</html>
